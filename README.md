@@ -62,3 +62,14 @@ This is the main method for retrieving translated content from given project and
 async listKeysInFileForLanguage(options: ListKeysInFile, config: CommonConfig = {})
 ```
 Documentation: https://localazy.com/docs/api/files#retrieve-a-list-of-keys-and-translations-from-file
+
+
+# FAQ
+## Localazy's API supports method that is not included in this library.
+It's possible as the API is still actively developed and it might take us some time to update all related projects. Feel free to create a new issue or pull request for this. 
+
+## I'd like to import and use a type definition for one of the methods. Can I do that?
+Yes. We publish type definitions for arguments of all the methods to NPM. They reside in `@localazy/ts-api/dist/models`, e.g.
+```
+import ListProjects from '@localazy/ts-api/dist/models/list-projects';
+```
