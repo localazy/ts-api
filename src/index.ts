@@ -42,7 +42,7 @@ class LocalazyService {
   }
 
   /**
-  * Retrieve list of available file formats and related options
+  * Retrieve list of available file formats and related options.
   * @see https://localazy.com/docs/api/import#retrieve-a-list-of-available-file-types
   */
   public async listFormats(config: CommonConfig = {}) {
@@ -53,7 +53,7 @@ class LocalazyService {
   }
 
   /**
-  * List Localazy files
+  * List Localazy files.
   * @see https://localazy.com/docs/api/files
   */
   public async listFiles(options: ListFiles, config: CommonConfig = {}) {
