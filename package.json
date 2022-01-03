@@ -1,5 +1,5 @@
 {
-  "name": "localazy-ts-api",
+  "name": "@localazy/ts-api",
   "version": "1.0.0",
   "description": "This is a Typescript library facilitating usage of Localazy's API.",
   "main": "dist/index.js",
@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/localazy/localazy-ts-api.git"
+    "url": "git+https://github.com/localazy/ts-api"
   },
   "keywords": [
     "Localazy",
@@ -28,9 +28,9 @@
   "author": "Daniel Charvát - Localazy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/localazy/localazy-ts-api/issues"
+    "url": "https://github.com/localazy/ts-api/issues"
   },
-  "homepage": "https://github.com/localazy/localazy-ts-api#readme",
+  "homepage": "https://github.com/localazy/ts-api#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.8.1",
