@@ -2,19 +2,30 @@
   "name": "localazy-ts-api",
   "version": "1.0.0",
   "description": "This is a Typescript library facilitating usage of Localazy's API.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsxclear --fix",
-    "build": "tsc"
+    "build": "rimraf dist/* && tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
   },
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/localazy/localazy-ts-api.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "Localazy",
+    "Localazy API",
+    "TypeScript"
+  ],
+  "author": "Daniel Charvát - Localazy",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/localazy/localazy-ts-api/issues"
@@ -27,6 +38,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^16.1.0",
     "eslint-plugin-import": "^2.25.4",
+    "rimraf": "^3.0.2",
     "typescript": "^4.5.4"
   }
 }
