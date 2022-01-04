@@ -2,7 +2,7 @@ export type Key = {
   id: string;
   /** nested keys are stored as array entries. Simple keys are arrays containing single item. */
   key: string[];
-  value: string[];
+  value: string | string[] | Record<string, any>;
 };
 
 type KeysInFile = {
