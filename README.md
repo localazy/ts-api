@@ -70,6 +70,6 @@ It's possible as the API is still actively developed and it might take us some t
 
 ## I'd like to import and use a type definition for one of the methods. Can I do that?
 Yes. We publish type definitions for arguments of all the methods to NPM. They reside in `@localazy/ts-api/dist/models`, e.g.
-```
-import ListProjects from '@localazy/ts-api/dist/models/list-projects';
+```ts
+import ListProjects from '@localazy/ts-api/dist/models/arguments/list-projects';
 ```
