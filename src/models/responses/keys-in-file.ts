@@ -6,7 +6,7 @@ export type Key = {
 };
 
 type KeysInFile = {
-  keys: Key;
+  keys: Key[];
   /** Next is the paging key. The field is not contained if there are no more pages. */
   next?: string;
 };
