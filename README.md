@@ -29,6 +29,10 @@ Then, you'll be able to generate a project token [here](https://localazy.com/dev
 
 See [documentation](https://localazy.com/docs/api/authentication) for more information.
 
+### Base url
+
+Optional `baseUrl` parameter. Add prefix for all api calls. Useful for proxying requests.
+
 ## Methods overview
 
 ### listProjects
