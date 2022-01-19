@@ -10,6 +10,10 @@ import ImportResult from './models/responses/import-result';
 import Format from './models/responses/format';
 import FileResult from './models/responses/file-result';
 import KeysInFile from './models/responses/keys-in-file';
+import ListWebhooks from './models/arguments/list-webhooks';
+import ListWebhooksResult from './models/responses/list-webhooks-result';
+import PostWebhooks from './models/arguments/post-webhooks';
+import PostWebhooksResult from './models/responses/post-webhooks-result';
 
 class LocalazyService {
   private projectToken!: string;
@@ -81,6 +85,31 @@ class LocalazyService {
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/files/${fileId}/keys/${lang}`,
       projectToken: config.projectToken || this.projectToken,
       options: payload as Omit<ListKeysInFile, 'projectId' | 'fileId'>,
+    });
+  }
+
+  /**
+   * Retrieve list of webhooks for project.
+   * @see https://localazy.com/docs/api/webhooks
+   */
+  public async listWebhooks(options: ListWebhooks, config: CommonConfig = {}): Promise<ListWebhooksResult> {
+    const { projectId } = options;
+    return api.get({
+      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/webhooks`,
+      projectToken: config.projectToken || this.projectToken,
+    });
+  }
+
+  /**
+   * Store a new webhooks configuration for the project.
+   * @see https://localazy.com/docs/api/webhooks
+   */
+  public async postWebhooks(options: PostWebhooks, config: CommonConfig = {}): Promise<PostWebhooksResult> {
+    const { projectId } = options;
+    return api.post({
+      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/webhooks`,
+      projectToken: config.projectToken || this.projectToken,
+      options: options.webhooks,
     });
   }
 }
