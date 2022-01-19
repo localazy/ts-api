@@ -2,7 +2,7 @@ name: CI
 on: [push, pull_request]
 jobs:
   execute:
-    runs-on: [self-hosted, Linux, aws]
+    runs-on: ubuntu-latest
     env: 
       INPUT_TOKEN: ''
     steps:
