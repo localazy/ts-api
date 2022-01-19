@@ -8,7 +8,7 @@ export default class LocalazyAPI {
   public static async get(options: Common) {
     const queryParams = options.options ? `?${LocalazyAPI.getQueryString(options.options)}` : '';
 
-    const response = await fetch(`/api${options.url}${queryParams}`, {
+    const response = await fetch(`${options.url}${queryParams}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${options.projectToken}`,
@@ -20,7 +20,7 @@ export default class LocalazyAPI {
   }
 
   public static async post(options: Common) {
-    const response = await fetch(`/api${options.url}`, {
+    const response = await fetch(`${options.url}`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${options.projectToken}`,
