@@ -1,6 +1,6 @@
 import { Phrase, Tag, Metadata } from '../common/screenshots';
 
-type Screenshot = {
+export type Screenshot = {
   comment?: string;
   addTags?: Tag[];
   removeTags?: Tag[];

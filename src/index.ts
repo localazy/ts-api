@@ -185,7 +185,7 @@ class LocalazyService {
   public async putScreenshot(options: PutScreenshot, config: CommonConfig = {}): Promise<PutScreenshotResult> {
     const { projectId, screenshotId } = options;
     return api.put({
-      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots/${screenshotId}/data`,
+      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots/${screenshotId}`,
       projectToken: config.projectToken || this.projectToken,
       options: options.screenshot,
     });
