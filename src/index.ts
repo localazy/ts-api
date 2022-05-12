@@ -14,6 +14,14 @@ import ListWebhooks from './models/arguments/list-webhooks';
 import ListWebhooksResult from './models/responses/list-webhooks-result';
 import PostWebhooks from './models/arguments/post-webhooks';
 import PostWebhooksResult from './models/responses/post-webhooks-result';
+import ListScreenshots from './models/arguments/list-screenshots';
+import ListScreenshotsResult from './models/responses/list-screenshots-result';
+import ListScreenshotsTags from './models/arguments/list-screenshots-tags';
+import ListScreenshotsTagsResult from './models/responses/list-screenshots-tags-result';
+import PostScreenshot from './models/arguments/post-screenshot';
+import PostScreenshotResult from './models/responses/post-screenshot-result';
+import PutScreenshot from './models/arguments/put-screenshot';
+import PutScreenshotResult from './models/responses/put-screenshot-result';
 
 class LocalazyService {
   private projectToken!: string;
@@ -110,6 +118,59 @@ class LocalazyService {
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/webhooks`,
       projectToken: config.projectToken || this.projectToken,
       options: options.webhooks,
+    });
+  }
+
+  /**
+   * Retrieve list of screenshots for project.
+   * @see https://localazy.com/docs/api/screenshots
+   */
+  public async listScreenshots(options: ListScreenshots, config: CommonConfig = {}): Promise<ListScreenshotsResult> {
+    const { projectId } = options;
+    return api.get({
+      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots`,
+      projectToken: config.projectToken || this.projectToken,
+    });
+  }
+
+  /**
+   * Retrive list of screenshots tags for project.
+   * @see https://localazy.com/docs/api/screenshots
+   */
+  public async listScreenshotsTags(
+    options: ListScreenshotsTags,
+    config: CommonConfig = {},
+  ): Promise<ListScreenshotsTagsResult> {
+    const { projectId } = options;
+    return api.get({
+      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots/tags`,
+      projectToken: config.projectToken || this.projectToken,
+    });
+  }
+
+  /**
+   * Upload a new screenshot for the project.
+   * @see https://localazy.com/docs/api/screenshots
+   */
+  public async postScreenshot(options: PostScreenshot, config: CommonConfig = {}): Promise<PostScreenshotResult> {
+    const { projectId } = options;
+    return api.post({
+      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots`,
+      projectToken: config.projectToken || this.projectToken,
+      rawData: options.rawScreenshot,
+    });
+  }
+
+  /**
+   * Replace the existing screenshot for the project.
+   * @see https://localazy.com/docs/api/screenshots
+   */
+  public async putScreenshot(options: PutScreenshot, config: CommonConfig = {}): Promise<PutScreenshotResult> {
+    const { projectId, screenshotId } = options;
+    return api.put({
+      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots/${screenshotId}/data`,
+      projectToken: config.projectToken || this.projectToken,
+      rawData: options.rawScreenshot,
     });
   }
 }
