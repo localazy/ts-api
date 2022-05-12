@@ -62,6 +62,18 @@ export default class LocalazyAPI {
     return response.json();
   }
 
+  public static async delete(options: Common) {
+    const response = await fetch(`${options.url}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${options.projectToken}`,
+      },
+    }).catch((e) => {
+      throw e;
+    });
+    return response.json();
+  }
+
   private static getQueryString = (queries: Record<string, any>) => Object.entries(queries)
     .reduce((acc, [key, value]) => [...acc, `${encodeURIComponent(key)}=${encodeURIComponent(value)}`], [] as string[])
     .join('&');

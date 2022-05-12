@@ -18,10 +18,14 @@ import ListScreenshots from './models/arguments/list-screenshots';
 import ListScreenshotsResult from './models/responses/list-screenshots-result';
 import ListScreenshotsTags from './models/arguments/list-screenshots-tags';
 import ListScreenshotsTagsResult from './models/responses/list-screenshots-tags-result';
+import PostScreenshots from './models/arguments/post-screenshots';
+import PostScreenshotsResult from './models/responses/post-screenshots-result';
 import PostScreenshot from './models/arguments/post-screenshot';
 import PostScreenshotResult from './models/responses/post-screenshot-result';
 import PutScreenshot from './models/arguments/put-screenshot';
 import PutScreenshotResult from './models/responses/put-screenshot-result';
+import DeleteScreenshot from './models/arguments/delete-screenshot';
+import DeleteScreenshotResult from './models/responses/delete-screenshot-result';
 
 class LocalazyService {
   private projectToken!: string;
@@ -152,7 +156,7 @@ class LocalazyService {
    * Upload a new screenshot for the project.
    * @see https://localazy.com/docs/api/screenshots
    */
-  public async postScreenshot(options: PostScreenshot, config: CommonConfig = {}): Promise<PostScreenshotResult> {
+  public async postScreenshots(options: PostScreenshots, config: CommonConfig = {}): Promise<PostScreenshotsResult> {
     const { projectId } = options;
     return api.post({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots`,
@@ -162,7 +166,20 @@ class LocalazyService {
   }
 
   /**
-   * Replace the existing screenshot for the project.
+   * Change image data of existing screenshot.
+   * @see https://localazy.com/docs/api/screenshots
+   */
+  public async postScreenshot(options: PostScreenshot, config: CommonConfig = {}): Promise<PostScreenshotResult> {
+    const { projectId, screenshotId } = options;
+    return api.post({
+      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots/${screenshotId}`,
+      projectToken: config.projectToken || this.projectToken,
+      rawData: options.rawScreenshot,
+    });
+  }
+
+  /**
+   * Change existing screenshot (metadata).
    * @see https://localazy.com/docs/api/screenshots
    */
   public async putScreenshot(options: PutScreenshot, config: CommonConfig = {}): Promise<PutScreenshotResult> {
@@ -170,7 +187,15 @@ class LocalazyService {
     return api.put({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots/${screenshotId}/data`,
       projectToken: config.projectToken || this.projectToken,
-      rawData: options.rawScreenshot,
+      options: options.screenshot,
+    });
+  }
+
+  public async deleteScreenshot(options: DeleteScreenshot, config: CommonConfig = {}): Promise<DeleteScreenshotResult> {
+    const { projectId, screenshotId } = options;
+    return api.delete({
+      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots/${screenshotId}`,
+      projectToken: config.projectToken || this.projectToken,
     });
   }
 }
