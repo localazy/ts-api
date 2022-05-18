@@ -23,10 +23,12 @@
   "keywords": [
     "Localazy",
     "Localazy API",
-    "TypeScript"
+    "TypeScript",
+    "i18n",
+    "t10n"
   ],
-  "author": "Daniel Charvát - Localazy",
-  "license": "ISC",
+  "author": "Localazy",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/localazy/ts-api/issues"
   },
