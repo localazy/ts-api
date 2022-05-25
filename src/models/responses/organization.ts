@@ -6,6 +6,7 @@ type Organization = {
   releaseTags: boolean;
   formatConversions: boolean;
   screenshots: boolean;
+  screenshotsForFigma: boolean;
   additionalMt: boolean;
   mtPretranslate: boolean;
   webhooks: boolean;
