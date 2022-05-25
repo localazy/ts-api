@@ -93,7 +93,7 @@ Returns the webhooks configuration for the given project.
 async listWebhooks(options: ListWebhooks, config: CommonConfig = {})
 ```
 
-Documentation: https://localazy.com/docs/api/webhooks
+Documentation: https://localazy.com/docs/api/webhooks-api#list-webhooks-configuration
 
 ### postWebhooks
 
@@ -103,7 +103,65 @@ Store a new webhooks configuration for the project.
 async postWebhooks(options: PostWebhooks, config: CommonConfig = {})
 ```
 
-Documentation: https://localazy.com/docs/api/webhooks
+Documentation: https://localazy.com/docs/api/webhooks-api#update-webhooks-configuration
+
+### listScreenshots
+
+List all screenshots for the given project.
+
+```ts
+async listScreenshots(options: ListScreenshots, config: CommonConfig = {})
+```
+
+Documentation: https://localazy.com/docs/api/screenshots
+
+### listScreenshotsTags
+
+List all existing tags for screenshots.
+
+```ts
+async listScreenshotsTags(options: ListScreenshotsTags, config: CommonConfig = {})
+```
+
+Documentation: https://localazy.com/docs/api/screenshots
+
+### postScreenshots
+
+Upload a new screenshot.
+
+```ts
+async postScreenshots(options: PostScreenshots, config: CommonConfig = {})
+```
+
+Documentation: https://localazy.com/docs/api/screenshots
+
+### postScreenshot
+
+Change image data of existing screenshot.
+
+```ts
+async postScreenshot(options: PostScreenshot, config: CommonConfig = {})
+```
+
+Documentation: https://localazy.com/docs/api/screenshots
+
+### putScreenshot
+
+Change existing screenshot.
+
+```ts
+async putScreenshot(options: PutScreenshot, config: CommonConfig = {})
+```
+
+Documentation: https://localazy.com/docs/api/screenshots
+
+### deleteScreenshot
+
+```ts
+async deleteScreenshot(options: DeleteScreenshot, config: CommonConfig = {})
+```
+
+Documentation: https://localazy.com/docs/api/screenshots
 
 # FAQ
 
