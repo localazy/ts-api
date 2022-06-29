@@ -8,13 +8,11 @@ type Common = {
 export default class LocalazyAPI {
   public static async get(options: Common) {
     const queryParams = options.options ? `?${LocalazyAPI.getQueryString(options.options)}` : '';
-    const additionalHeaders = (options.options ? options.options.headers || {} : {}) as object;
 
     const response = await fetch(`${options.url}${queryParams}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${options.projectToken}`,
-        ...additionalHeaders,
       },
     }).catch((e) => {
       throw e;
@@ -23,13 +21,11 @@ export default class LocalazyAPI {
   }
 
   public static async getBlob(options: Common): Promise<Blob> {
-    const additionalHeaders = (options.options ? options.options.headers || {} : {}) as object;
-
     const response = await fetch(`${options.url}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${options.projectToken}`,
-        ...additionalHeaders,
+        'Response-Type': 'blob',
       },
     }).catch((e) => {
       throw e;

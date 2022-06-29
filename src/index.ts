@@ -95,11 +95,6 @@ class LocalazyService {
     return api.getBlob({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/files/${fileId}/download/${lang}`,
       projectToken: config.projectToken || this.projectToken,
-      options: {
-        headers: {
-          'Response-Type': 'blob',
-        },
-      },
     });
   }
 
