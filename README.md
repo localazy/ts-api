@@ -75,6 +75,16 @@ async listFiles(options: ListFiles, config: CommonConfig = {})
 
 Documentation: https://localazy.com/docs/api/files
 
+### getFileContents
+
+Returns the given file contents.
+
+```ts
+async getFileContents(options: DownloadFile, config: CommonConfig = {})
+```
+
+Documentation: https://localazy.com/docs/api/files
+
 ### listKeysInFileForLanguage
 
 This is the main method for retrieving translated content from given project and localazy file for given language.

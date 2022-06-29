@@ -20,6 +20,19 @@ export default class LocalazyAPI {
     return response.json();
   }
 
+  public static async getBlob(options: Common): Promise<Blob> {
+    const response = await fetch(`${options.url}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${options.projectToken}`,
+        'Response-Type': 'blob',
+      },
+    }).catch((e) => {
+      throw e;
+    });
+    return response.blob();
+  }
+
   public static async post(options: Common) {
     let body;
     if (options.rawData) {
