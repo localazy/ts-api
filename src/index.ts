@@ -26,7 +26,7 @@ import PutScreenshot from './models/arguments/put-screenshot';
 import PutScreenshotResult from './models/responses/put-screenshot-result';
 import DeleteScreenshot from './models/arguments/delete-screenshot';
 import DeleteScreenshotResult from './models/responses/delete-screenshot-result';
-import DownloadFile from './models/arguments/download-file';
+import GetFileContents from './models/arguments/get-file-contents';
 
 class LocalazyService {
   private projectToken!: string;
@@ -90,7 +90,7 @@ class LocalazyService {
    * Returns the given file contents.
    * @see https://localazy.com/docs/api/files
    */
-  public async getFileContents(options: DownloadFile, config: CommonConfig = {}) {
+  public async getFileContents(options: GetFileContents, config: CommonConfig = {}) {
     const { projectId, fileId, lang } = options;
     return api.getBlob({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/files/${fileId}/download/${lang}`,
