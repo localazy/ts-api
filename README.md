@@ -43,7 +43,7 @@ List projects related to the project token.
 async listProjects(options: ListProjects = {}, config: CommonConfig = {})
 ```
 
-Documentation: https://localazy.com/docs/api/list-projects
+Documentation: https://localazy.com/docs/api/projects#list-projects
 
 ### import
 
