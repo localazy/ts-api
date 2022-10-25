@@ -3,6 +3,12 @@ export type Key = {
   /** nested keys are stored as array entries. Simple keys are arrays containing single item. */
   key: string[];
   value: string | string[] | Record<string, any>;
+
+  // Following attributes are available when extra_info during fetch was set to true
+  comment?: string;
+  deprecated?: number;
+  hidden?: boolean;
+  limit?: number;
 };
 
 type KeysInFile = {

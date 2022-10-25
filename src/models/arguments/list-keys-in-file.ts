@@ -6,6 +6,8 @@ type ListKeysInFile = {
   deprecated?: boolean;
   limit?: number;
   next?: string;
+  /** Receive additional info such as translation note, whether it's hidden etc. */
+  extra_info?: boolean;
 };
 
 export default ListKeysInFile;
