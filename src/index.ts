@@ -40,7 +40,7 @@ class LocalazyService {
 
   /**
    * List projects related to the project token.
-  * @see https://localazy.com/docs/api/list-projects
+  * @see https://localazy.com/docs/api/projects#list-projects
   */
   public async listProjects(options: ListProjects = {}, config: CommonConfig = {}): Promise<Project[]> {
     return api.get({
@@ -52,7 +52,7 @@ class LocalazyService {
 
   /**
   * Import content into Localazy.
-  * @see https://localazy.com/docs/api/import
+  * @see https://localazy.com/docs/api/import#import-content-to-a-project
   */
   public async import(options: Import, config: CommonConfig = {}): Promise<ImportResult> {
     const { projectId, ...payload } = options;
@@ -65,7 +65,7 @@ class LocalazyService {
 
   /**
   * Retrieve list of available file formats and related options.
-  * @see https://localazy.com/docs/api/import#retrieve-a-list-of-available-file-types
+  * @see https://localazy.com/docs/api/import#list-available-file-types
   */
   public async listFormats(config: CommonConfig = {}): Promise<Format[]> {
     return api.get({
@@ -76,7 +76,7 @@ class LocalazyService {
 
   /**
   * List Localazy files.
-  * @see https://localazy.com/docs/api/files
+  * @see https://localazy.com/docs/api/files#list-files-in-project
   */
   public async listFiles(options: ListFiles, config: CommonConfig = {}): Promise<FileResult[]> {
     const { projectId } = options;
@@ -88,7 +88,7 @@ class LocalazyService {
 
   /**
    * Returns the given file contents.
-   * @see https://localazy.com/docs/api/files
+   * @see https://localazy.com/docs/api/files#list-file-content
    */
   public async getFileContents(options: GetFileContents, config: CommonConfig = {}) {
     const { projectId, fileId, lang } = options;
@@ -115,7 +115,7 @@ class LocalazyService {
 
   /**
    * Retrieve list of webhooks for project.
-   * @see https://localazy.com/docs/api/webhooks
+   * @see https://localazy.com/docs/api/webhooks-api#list-webhooks-configuration
    */
   public async listWebhooks(options: ListWebhooks, config: CommonConfig = {}): Promise<ListWebhooksResult> {
     const { projectId } = options;
@@ -127,7 +127,7 @@ class LocalazyService {
 
   /**
    * Store a new webhooks configuration for the project.
-   * @see https://localazy.com/docs/api/webhooks
+   * @see https://localazy.com/docs/api/screenshot-management#create-a-new-screenshot
    */
   public async postWebhooks(options: PostWebhooks, config: CommonConfig = {}): Promise<PostWebhooksResult> {
     const { projectId } = options;
@@ -140,7 +140,7 @@ class LocalazyService {
 
   /**
    * Retrieve list of screenshots for project.
-   * @see https://localazy.com/docs/api/screenshots
+   * @see https://localazy.com/docs/api/screenshot-management#list-screenshots
    */
   public async listScreenshots(options: ListScreenshots, config: CommonConfig = {}): Promise<ListScreenshotsResult> {
     const { projectId } = options;
@@ -152,7 +152,7 @@ class LocalazyService {
 
   /**
    * Retrive list of screenshots tags for project.
-   * @see https://localazy.com/docs/api/screenshots
+   * @see https://localazy.com/docs/api/screenshot-management#list-screenshots-tags
    */
   public async listScreenshotsTags(
     options: ListScreenshotsTags,
@@ -167,7 +167,7 @@ class LocalazyService {
 
   /**
    * Upload a new screenshot for the project.
-   * @see https://localazy.com/docs/api/screenshots
+   * @see https://localazy.com/docs/api/screenshot-management#create-a-new-screenshot
    */
   public async postScreenshots(options: PostScreenshots, config: CommonConfig = {}): Promise<PostScreenshotsResult> {
     const { projectId } = options;
@@ -180,7 +180,7 @@ class LocalazyService {
 
   /**
    * Change image data of existing screenshot.
-   * @see https://localazy.com/docs/api/screenshots
+   * @see https://localazy.com/docs/api/screenshot-management#update-the-image-of-an-existing-screenshot
    */
   public async postScreenshot(options: PostScreenshot, config: CommonConfig = {}): Promise<PostScreenshotResult> {
     const { projectId, screenshotId } = options;
@@ -193,7 +193,7 @@ class LocalazyService {
 
   /**
    * Change existing screenshot (metadata).
-   * @see https://localazy.com/docs/api/screenshots
+   * @see https://localazy.com/docs/api/screenshot-management#update-an-existing-screenshot
    */
   public async putScreenshot(options: PutScreenshot, config: CommonConfig = {}): Promise<PutScreenshotResult> {
     const { projectId, screenshotId } = options;
@@ -204,6 +204,10 @@ class LocalazyService {
     });
   }
 
+  /**
+   * Delete existing screenshot
+   * @see https://localazy.com/docs/api/screenshot-management#delete-a-screenshot
+   */
   public async deleteScreenshot(options: DeleteScreenshot, config: CommonConfig = {}): Promise<DeleteScreenshotResult> {
     const { projectId, screenshotId } = options;
     return api.delete({
