@@ -15,6 +15,9 @@ type Import = {
   /** Do not import translations that are the same as the source language content.
      * Default: true */
   filterSource?: boolean;
+  /** Tell the server to deprecate any key missing in this upload batch
+   * Default: 'none' */
+  deprecate?: 'none' | 'file' | 'project';
   /** The structure of files and strings to be imported. */
   files: LocFile[];
 };
