@@ -27,6 +27,10 @@ import PutScreenshotResult from './models/responses/put-screenshot-result';
 import DeleteScreenshot from './models/arguments/delete-screenshot';
 import DeleteScreenshotResult from './models/responses/delete-screenshot-result';
 import GetFileContents from './models/arguments/get-file-contents';
+import DeleteKey from './models/arguments/delete-key';
+import DeleteKeyResult from './models/responses/delete-key-result';
+import UpdateKey from './models/arguments/update-key';
+import UpdateKeyResult from './models/responses/update-key-result';
 
 class LocalazyService {
   private projectToken!: string;
@@ -212,6 +216,31 @@ class LocalazyService {
     const { projectId, screenshotId } = options;
     return api.delete({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots/${screenshotId}`,
+      projectToken: config.projectToken || this.projectToken,
+    });
+  }
+
+  /**
+   * Update an existing key
+   * @see https://localazy.com/docs/api/source-keys#update-source-key
+   */
+  public async updateKey(options: UpdateKey, config: CommonConfig = {}): Promise<UpdateKeyResult> {
+    const { projectId, keyId, ...payload } = options;
+    return api.put({
+      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/keys/${keyId}`,
+      projectToken: config.projectToken || this.projectToken,
+      options: payload as Omit<UpdateKey, 'projectId, keyId'>,
+    });
+  }
+
+  /**
+   * Delete an existing key
+   * @see https://localazy.com/docs/api/source-keys#delete-source-key
+   */
+  public async deleteKey(options: DeleteKey, config: CommonConfig = {}): Promise<DeleteKeyResult> {
+    const { projectId, keyId } = options;
+    return api.delete({
+      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/keys/${keyId}`,
       projectToken: config.projectToken || this.projectToken,
     });
   }
