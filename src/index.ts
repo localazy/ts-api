@@ -31,6 +31,8 @@ import DeleteKey from './models/arguments/delete-key';
 import DeleteKeyResult from './models/responses/delete-key-result';
 import UpdateKey from './models/arguments/update-key';
 import UpdateKeyResult from './models/responses/update-key-result';
+import GetWebhooksSecret from './models/arguments/get-webhooks-secret';
+import GetWebhooksSecretResult from './models/responses/get-webhooks-secret-result';
 
 class LocalazyService {
   private projectToken!: string;
@@ -241,6 +243,21 @@ class LocalazyService {
     const { projectId, keyId } = options;
     return api.delete({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/keys/${keyId}`,
+      projectToken: config.projectToken || this.projectToken,
+    });
+  }
+
+  /**
+   * Return webhooks secret, can be used to verify webhook body
+   * @see To be added
+   */
+  public async getWebhooksSecret(
+    options: GetWebhooksSecret,
+    config: CommonConfig = {},
+  ): Promise<GetWebhooksSecretResult> {
+    const { projectId } = options;
+    return api.get({
+      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/webhooks/secret`,
       projectToken: config.projectToken || this.projectToken,
     });
   }
