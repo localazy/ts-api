@@ -133,7 +133,7 @@ class LocalazyService {
 
   /**
    * Store a new webhooks configuration for the project.
-   * @see https://localazy.com/docs/api/screenshot-management#create-a-new-screenshot
+   * @see https://localazy.com/docs/api/webhooks-api#update-webhooks-configuration
    */
   public async postWebhooks(options: PostWebhooks, config: CommonConfig = {}): Promise<PostWebhooksResult> {
     const { projectId } = options;
@@ -146,7 +146,7 @@ class LocalazyService {
 
   /**
    * Return webhooks secret, can be used to verify webhook body
-   * @see To be added
+   * @see https://localazy.com/docs/api/webhooks-api#get-projectsprojectidwebhookssecret
    */
   public async getWebhooksSecret(
     options: GetWebhooksSecret,
