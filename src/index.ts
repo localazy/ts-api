@@ -31,6 +31,8 @@ import DeleteKey from './models/arguments/delete-key';
 import DeleteKeyResult from './models/responses/delete-key-result';
 import UpdateKey from './models/arguments/update-key';
 import UpdateKeyResult from './models/responses/update-key-result';
+import GetWebhooksSecret from './models/arguments/get-webhooks-secret';
+import GetWebhooksSecretResult from './models/responses/get-webhooks-secret-result';
 
 class LocalazyService {
   private projectToken!: string;
@@ -131,7 +133,7 @@ class LocalazyService {
 
   /**
    * Store a new webhooks configuration for the project.
-   * @see https://localazy.com/docs/api/screenshot-management#create-a-new-screenshot
+   * @see https://localazy.com/docs/api/webhooks-api#update-webhooks-configuration
    */
   public async postWebhooks(options: PostWebhooks, config: CommonConfig = {}): Promise<PostWebhooksResult> {
     const { projectId } = options;
@@ -139,6 +141,21 @@ class LocalazyService {
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/webhooks`,
       projectToken: config.projectToken || this.projectToken,
       options: options.webhooks,
+    });
+  }
+
+  /**
+   * Return webhooks secret, can be used to verify webhook body
+   * @see https://localazy.com/docs/api/webhooks-api#get-projectsprojectidwebhookssecret
+   */
+  public async getWebhooksSecret(
+    options: GetWebhooksSecret,
+    config: CommonConfig = {},
+  ): Promise<GetWebhooksSecretResult> {
+    const { projectId } = options;
+    return api.get({
+      url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/webhooks/secret`,
+      projectToken: config.projectToken || this.projectToken,
     });
   }
 
