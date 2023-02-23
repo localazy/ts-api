@@ -53,6 +53,7 @@ class LocalazyService {
       url: `${config.baseUrl || this.baseUrl}/projects`,
       projectToken: config.projectToken || this.projectToken,
       options,
+      headers: config.headers,
     });
   }
 
@@ -66,6 +67,7 @@ class LocalazyService {
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/import`,
       projectToken: config.projectToken || this.projectToken,
       options: payload as Omit<Import, 'projectId'>,
+      headers: config.headers,
     });
   }
 
@@ -77,6 +79,7 @@ class LocalazyService {
     return api.get({
       url: `${config.baseUrl || this.baseUrl}/import/formats`,
       projectToken: config.projectToken || this.projectToken,
+      headers: config.headers,
     });
   }
 
@@ -89,6 +92,7 @@ class LocalazyService {
     return api.get({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/files`,
       projectToken: config.projectToken || this.projectToken,
+      headers: config.headers,
     });
   }
 
@@ -101,6 +105,7 @@ class LocalazyService {
     return api.getBlob({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/files/${fileId}/download/${lang}`,
       projectToken: config.projectToken || this.projectToken,
+      headers: config.headers,
     });
   }
 
@@ -116,6 +121,7 @@ class LocalazyService {
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/files/${fileId}/keys/${lang}`,
       projectToken: config.projectToken || this.projectToken,
       options: payload as Omit<ListKeysInFile, 'projectId' | 'fileId'>,
+      headers: config.headers,
     });
   }
 
@@ -128,6 +134,7 @@ class LocalazyService {
     return api.get({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/webhooks`,
       projectToken: config.projectToken || this.projectToken,
+      headers: config.headers,
     });
   }
 
@@ -141,6 +148,7 @@ class LocalazyService {
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/webhooks`,
       projectToken: config.projectToken || this.projectToken,
       options: options.webhooks,
+      headers: config.headers,
     });
   }
 
@@ -156,6 +164,7 @@ class LocalazyService {
     return api.get({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/webhooks/secret`,
       projectToken: config.projectToken || this.projectToken,
+      headers: config.headers,
     });
   }
 
@@ -168,6 +177,7 @@ class LocalazyService {
     return api.get({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots`,
       projectToken: config.projectToken || this.projectToken,
+      headers: config.headers,
     });
   }
 
@@ -183,6 +193,7 @@ class LocalazyService {
     return api.get({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots/tags`,
       projectToken: config.projectToken || this.projectToken,
+      headers: config.headers,
     });
   }
 
@@ -196,6 +207,7 @@ class LocalazyService {
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots`,
       projectToken: config.projectToken || this.projectToken,
       rawData: options.rawScreenshot,
+      headers: config.headers,
     });
   }
 
@@ -209,6 +221,7 @@ class LocalazyService {
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots/${screenshotId}`,
       projectToken: config.projectToken || this.projectToken,
       rawData: options.rawScreenshot,
+      headers: config.headers,
     });
   }
 
@@ -222,6 +235,7 @@ class LocalazyService {
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots/${screenshotId}`,
       projectToken: config.projectToken || this.projectToken,
       options: options.screenshot,
+      headers: config.headers,
     });
   }
 
@@ -234,6 +248,7 @@ class LocalazyService {
     return api.delete({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/screenshots/${screenshotId}`,
       projectToken: config.projectToken || this.projectToken,
+      headers: config.headers,
     });
   }
 
@@ -247,6 +262,7 @@ class LocalazyService {
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/keys/${keyId}`,
       projectToken: config.projectToken || this.projectToken,
       options: payload as Omit<UpdateKey, 'projectId, keyId'>,
+      headers: config.headers,
     });
   }
 
@@ -259,6 +275,7 @@ class LocalazyService {
     return api.delete({
       url: `${config.baseUrl || this.baseUrl}/projects/${projectId}/keys/${keyId}`,
       projectToken: config.projectToken || this.projectToken,
+      headers: config.headers,
     });
   }
 }

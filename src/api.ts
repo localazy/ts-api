@@ -1,6 +1,7 @@
 type Common = {
   url: string;
   projectToken: string;
+  headers?: Record<string, string>;
   options?: Record<string, unknown>;
   rawData?: string;
 };
@@ -13,6 +14,7 @@ export default class LocalazyAPI {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${options.projectToken}`,
+        ...options.headers,
       },
     }).catch((e) => {
       throw e;
@@ -26,6 +28,7 @@ export default class LocalazyAPI {
       headers: {
         Authorization: `Bearer ${options.projectToken}`,
         'Response-Type': 'blob',
+        ...options.headers,
       },
     }).catch((e) => {
       throw e;
@@ -46,6 +49,7 @@ export default class LocalazyAPI {
       headers: {
         Authorization: `Bearer ${options.projectToken}`,
         'Content-Type': 'application/json',
+        ...options.headers,
       },
       body,
     }).catch((e) => {
@@ -67,6 +71,7 @@ export default class LocalazyAPI {
       headers: {
         Authorization: `Bearer ${options.projectToken}`,
         'Content-Type': 'application/json',
+        ...options.headers,
       },
       body,
     }).catch((e) => {
@@ -80,6 +85,7 @@ export default class LocalazyAPI {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${options.projectToken}`,
+        ...options.headers,
       },
     }).catch((e) => {
       throw e;
