@@ -13,7 +13,7 @@
     "patch": "standard-version",
     "minor": "standard-version --release-as minor",
     "major": "standard-version --release-as major",
-    "release": "npm run version && git push && git push --tags"
+    "release": "git push && git push --tags"
   },
   "files": [
     "dist/**/*"
