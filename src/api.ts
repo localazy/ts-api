@@ -1,3 +1,5 @@
+import { LocalazyError } from './errors/localazy-error';
+
 type Common = {
   url: string;
   projectToken: string;
@@ -19,7 +21,12 @@ export default class LocalazyAPI {
     }).catch((e) => {
       throw e;
     });
-    return response.json();
+    const json = await response.json();
+    if (json.success === false) {
+      throw new LocalazyError(json.error, json.message, json.code);
+    }
+
+    return json;
   }
 
   public static async getBlob(options: Common): Promise<Blob> {
@@ -33,6 +40,10 @@ export default class LocalazyAPI {
     }).catch((e) => {
       throw e;
     });
+    if (response.status >= 400 && response.status < 500) {
+      throw new LocalazyError(response.statusText, '', response.status);
+    }
+
     return response.blob();
   }
 
@@ -55,7 +66,12 @@ export default class LocalazyAPI {
     }).catch((e) => {
       throw e;
     });
-    return response.json();
+    const json = await response.json();
+    if (json.success === false) {
+      throw new LocalazyError(json.error, json.message, json.code);
+    }
+
+    return json;
   }
 
   public static async put(options: Common) {
@@ -77,7 +93,12 @@ export default class LocalazyAPI {
     }).catch((e) => {
       throw e;
     });
-    return response.json();
+    const json = await response.json();
+    if (json.success === false) {
+      throw new LocalazyError(json.error, json.message, json.code);
+    }
+
+    return json;
   }
 
   public static async delete(options: Common) {
@@ -90,7 +111,12 @@ export default class LocalazyAPI {
     }).catch((e) => {
       throw e;
     });
-    return response.json();
+    const json = await response.json();
+    if (json.success === false) {
+      throw new LocalazyError(json.error, json.message, json.code);
+    }
+
+    return json;
   }
 
   private static getQueryString = (queries: Record<string, any>) => Object.entries(queries)
