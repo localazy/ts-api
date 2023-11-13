@@ -1,3 +1,6 @@
+❗️(Deprecated) Use the new https://github.com/localazy/api-client instead.
+
+----
 # @localazy/ts-api
 
 This is a Typescript library facilitating usage of Localazy's API. To better understand this library, it is recommended to study the [API documentation](https://localazy.com/docs/api/introduction) first.
